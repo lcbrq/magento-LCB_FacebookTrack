@@ -1,0 +1,23 @@
+<?xml version="1.0"?>   
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="facebooktrack/index" name="facebooktrack_index" template="facebooktrack/default.phtml" />
+        </reference>   
+    </default>
+    <catalog_product_view> 
+        <reference name="before_body_end">
+            <block type="facebooktrack/index" name="facebooktrack_index" template="facebooktrack/product.phtml"/>   
+        </reference>   
+    </catalog_product_view>
+    <opc_index_index>
+        <reference name="before_body_end">
+            <block type="facebooktrack/index" name="facebooktrack_index" template="facebooktrack/checkout.phtml"/>   
+        </reference>   
+    </opc_index_index>
+    <checkout_onepage_success> 
+        <reference name="before_body_end">
+            <block type="facebooktrack/index" name="facebooktrack_index" template="facebooktrack/success.phtml"/>   
+        </reference>   
+    </checkout_onepage_success>
+</layout>

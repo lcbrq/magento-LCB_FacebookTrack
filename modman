@@ -1,0 +1,4 @@
+app/etc/modules/LCB_FacebookTrack.xml                      app/etc/modules/LCB_FacebookTrack.xml
+app/code/local/LCB/FacebookTrack                           app/code/local/LCB/FacebookTrack 
+app/design/frontend/base/default/layout/facebooktrack.xml  app/design/frontend/base/default/layout/facebooktrack.xml
+app/design/frontend/base/default/template/facebooktrack    app/design/frontend/base/default/template/facebooktrack

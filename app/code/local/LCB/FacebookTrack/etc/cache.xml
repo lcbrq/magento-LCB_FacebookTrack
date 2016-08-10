@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <placeholders>
+        <facebook_tracking_cache>
+            <block>facebooktrack/index</block>
+            <name>facebook_tracking</name>
+            <placeholder>FB_TRACK</placeholder>
+            <cache_lifetime>0</cache_lifetime>
+        </facebook_tracking_cache>
+    </placeholders>
+</config>

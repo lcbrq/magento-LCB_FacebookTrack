@@ -1,0 +1,42 @@
+<?php $products = Mage::getModel('core/session')->getProductsAddedToCart() ?>
+
+<?php
+foreach ($products as $product):
+    if ($product && $product->getSku()):
+        ?>
+        <script type="text/javascript">
+            fbq(['track', 'AddToCart', {
+                    content_name: '<?php echo $product->getName(); ?>',
+                    content_type: 'product',
+                    content_ids: ['<?php echo $product->getSku(); ?>'],
+                    value: <?php echo $product->getFinalPrice(); ?>,
+                    currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+                    language: '<?php echo $this->getLanguage(); ?>'
+                }]);
+        </script>
+        <?php
+    endif;
+endforeach;
+?>
+<?php
+if (Mage::app()->getFrontController()->getRequest()->getModuleName() == "onepage") {
+    Mage::getModel('core/session')->unsProductsAddedToCart();
+}
+
+$quote = Mage::getModel('checkout/session')->getQuote();
+$quoteData = $quote->getData();
+$grandTotal = $quoteData['grand_total'];
+?>
+<script type="text/javascript">
+
+    jQuery(".opc-btn-checkout").click(function () {
+
+        fbq(['track', 'InitiateCheckout', {
+                value: <?php echo $grandTotal; ?>,
+                currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+                language: '<?php echo $this->getLanguage(); ?>'
+            }]);
+        return true;
+    });
+
+</script>

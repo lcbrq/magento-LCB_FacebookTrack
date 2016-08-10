@@ -1,0 +1,16 @@
+<?php
+$product = Mage::registry('current_product');
+if ($product):
+    ?>
+    <script type="text/javascript">
+        fbq(['track', 'ViewContent', {
+                content_name: '<?php echo $product->getName(); ?>',
+                content_type: 'product',
+                content_ids: ['<?php echo $product->getSku(); ?>'],
+                value: <?php echo $product->getFinalPrice(); ?>,
+                currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+                language: '<?php echo $this->getLanguage(); ?>'
+            }]);
+    </script>
+    <?php
+ endif;

@@ -1,0 +1,19 @@
+<?php
+$id = Mage::getSingleton('checkout/session')->getLastOrderId();
+$order = Mage::getModel('sales/order')->load($id);
+
+$products = array();
+foreach ($order->getAllVisibleItems() as $product) {
+    $products[] = $product->getSku();
+}
+?>
+
+<script type="text/javascript">
+    fbq('track', 'Purchase', {
+        content_ids: ['<?php echo implode(',', $products); ?>'],
+        content_type: 'product',
+        value: <?php echo $order->getGrandTotal(); ?>,
+        currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+        language: '<?php echo $this->getLanguage(); ?>'
+    });
+</script>
